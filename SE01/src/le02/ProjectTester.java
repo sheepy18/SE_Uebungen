@@ -9,13 +9,15 @@ import org.junit.Test;
  */
 public class ProjectTester {
 
-    ProjectIF simple_p1;
+    ProjectIF simple_p1, empty;
 
     @Before
     public void setup() {
         String[] [] simple_ex = {{"A","C"}};
+        String[] [] empty_ex = {{}};
 
         simple_p1 = new Project(simple_ex);
+        empty = new Project(empty_ex);
     }
 
     @Test
@@ -28,5 +30,13 @@ public class ProjectTester {
         assertTrue(simple_p1.isWellSorted(new String[]{"A","C"}));
     }
 
+    @Test
+    public void empty_1() {
+        assertFalse(simple_p1.isWellSorted(new String[]{}));
+    }
 
+    @Test
+    public void empty_2() {
+        assertFalse(empty.isWellSorted(new String[]{"A","B","C","D"}));
+    }
 }
