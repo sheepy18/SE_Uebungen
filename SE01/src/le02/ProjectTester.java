@@ -20,7 +20,7 @@ public class ProjectTester {
 
     @Test
     public void simlpe_p1_1() {
-        assertEquals(new String[] []{{"A","b"}}, simple_p1.getRules());
+        assertEquals(new String[] []{{"A","C"}}, simple_p1.getRules());
     }
 
     @Test
