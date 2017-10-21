@@ -14,7 +14,7 @@ public class ProjectTester {
     @Before
     public void setup() {
         String[] [] simple_ex = {{"A","C"}};
-        String[] [] empty_ex = {{}};
+        String[] [] empty_ex = {};
 
         simple_p1 = new Project(simple_ex);
         empty = new Project(empty_ex);
@@ -38,5 +38,10 @@ public class ProjectTester {
     @Test
     public void empty_2() {
         assertFalse(empty.isWellSorted(new String[]{"A","B","C","D"}));
+    }
+
+    @Test
+    public void empty_3() {
+        assertTrue(empty.isWellSorted(new String[]{}));
     }
 }
