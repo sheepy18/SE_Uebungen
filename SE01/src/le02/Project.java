@@ -16,7 +16,7 @@ public class Project implements ProjectIF{
 
     public boolean isWellSorted(String[] sequence) {
         boolean isWellSorted = true;
-        boolean isSorted;
+        boolean isSorted = false;
         boolean firstSorted = false;
 
         if((sequence.length != 0 && rules.length == 0) ||(sequence.length == 0 && rules.length != 0)){
@@ -34,12 +34,15 @@ public class Project implements ProjectIF{
                     firstSorted = true;
                     isSorted = false;
                     for(int k = 0; k < i; k++) {
-                        isSorted |= rules[x] [0].equals(sequence[k]);
+                        isSorted |= rules[x][0].equals(sequence[k]);
                     }
                     isWellSorted &= isSorted;
                 }
             }
         }
+
+        if(sequence.length == 0)
+            return true;
 
         return isWellSorted && firstSorted;
     }
