@@ -5,5 +5,6 @@ package le02.zeitNeu;
  */
 public interface ZeitIF {
 
-    int getMinutes();
+    int getMinute();
+    int getHour();
 }
