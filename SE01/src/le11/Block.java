@@ -9,17 +9,14 @@ public class Block {
     private Integer nonce;
     private String hash;
     private String data;
-    private String prevHash;
+    private Block prev;
 
-    public Block() {
-        blocknummer++;
-        prevHash = "";
-    }
     public Block(String data, int nonce) {
         blocknummer++;
         this.data = data;
         this.nonce = nonce;
-        prevHash = "";
+        prev = this;
+
         try {
             setHash();
         } catch (Exception e) {
@@ -30,7 +27,8 @@ public class Block {
         blocknummer++;
         this.data = data;
         this.nonce = nonce;
-        this.prevHash = prevBlock.getHash();
+        this.prev = prevBlock;
+
         try {
             setHash();
         } catch (Exception e) {
@@ -39,7 +37,7 @@ public class Block {
     }
 
     public void setHash() throws Exception {
-       String blockString = blocknummer + nonce + prevHash + data;
+       String blockString = blocknummer + nonce + prev.getHash() + data;
        byte[] blockBytes = blockString.getBytes();
 
        MessageDigest md = MessageDigest.getInstance("SHA");
@@ -49,17 +47,26 @@ public class Block {
     }
 
     public void mine() throws Exception{
-        while (!proofHash(hash)) {
+        while (!proofIsHashCorrect(hash)) {
             nonce++;
             setHash();
         }
     }
 
-    public boolean proofHash(String hash) {
+    public boolean proofIsHashCorrect(String hash) {
         return hash.matches("00\\w*");
     }
 
     public String getHash() {
         return  hash;
+    }
+
+    public void setPrev(Block b) {
+        prev = b;
+    }
+
+    public void setData(String data) throws Exception{
+        this.data = data;
+        setHash();
     }
 }
