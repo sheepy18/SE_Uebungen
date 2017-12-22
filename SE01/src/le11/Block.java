@@ -67,7 +67,6 @@ public class Block implements IObservable{
             nonce++;
             updateChain();
         }
-
     }
 
     public boolean checkIsHashCorrect(String hash) {
