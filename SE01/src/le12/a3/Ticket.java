@@ -4,12 +4,15 @@ public class Ticket {
 
     private static int price;
     private int parkTime;
+    private Kunde k;
 
-    public Ticket() {
+    public Ticket(Kunde k) {
+        this.k = k;
     }
 
-    public Ticket(int time) {
+    public Ticket(int time, Kunde k) {
         parkTime = time;
+        this.k = k;
     }
 
     public int getParkTime() {
@@ -26,5 +29,9 @@ public class Ticket {
     }
     public int calcPrice() {
         return price * parkTime;
+    }
+
+    public Kunde getK() {
+        return k;
     }
 }
