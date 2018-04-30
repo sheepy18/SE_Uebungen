@@ -126,7 +126,8 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-
+*.mf
+*.properties
 
 # OS
 .DS_Store
